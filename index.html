@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <title>Task List</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Istok+Web&family=Roboto:wght@400;700&display=swap"
@@ -16,25 +17,21 @@
       <nav>
         <a href="./index.html"><img src="./public/To-Do-Logo 1.svg" alt="Main logo todo list"></a>
       </nav>
-      <section>
-        <div>
-          <input type="text" placeholder="What do you need to do?" id="writeTask">
+      <div class="input-header">
+        <div calss="to-do-input">
+          <input type="text" placeholder="What do you need to do?" id="item">
+          <button id="enter">ADD</button>
         </div>
-        <div>
-          <button onclick="addTask()" type="button" id="addButton">ADD</button>
+      </div>
+        <div class="to-do-list">
+
         </div>
-      </section>
-      <section>
-        <div>
-          <ul>            
-            <li>
-              <label id="taskList">preview</label>
-            </li>
-          </ul>
-        </div>
-      </section>
 
     </div>
     <script type="module" src="/main.js"></script>
+
+    
+
+
   </body>
 </html>

@@ -3,3 +3,6 @@
   padding: 0;
   font-family: "Inter", sans-serif;
 }
+.update-controller{
+  display: none;
+}
