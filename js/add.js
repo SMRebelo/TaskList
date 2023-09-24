@@ -23,7 +23,7 @@ function displayItems() {
             <i class="fa-solid fa-pen-to-square editBtn"></i>
           </div>
         </div>
-        <div class="update controller">
+        <div class="update-controller">
           <button class="saveBtn">Save</button>
           <button class="cancelBtn">Cancel</button>
         </div>
@@ -34,12 +34,36 @@ function displayItems() {
   //? ICON check from "font awesome" i also add a class for delete button because this will erase all task checked
   //?CON edit from "font awesome" i also add a class for edit button because this will edit the input
 
-  document.querySelector(".to-do-list").innerHTML = items; //? here im acessing the empty div #to-do-list i puting there the inf o want to display. 
-  activateDeleteListeners(); //? im calling this function here because i want then to run as soon as i run the "displayItems" function.
+  document.querySelector(".to-do-list").innerHTML = items; //? here im acessing the empty div #to-do-list i puting there the inf o want to display. we have to call it by ".to-do-list" because we are calling a class with querySelector.
+    activateDeleteListeners(); //? im calling all this functions here because i want then to run as soon as i run the "displayItems" function.
   activateEditListeners();
   activateSaveListeners();
   activateCancelListeners();
 }
+function activateDeleteListeners() {
+    let deleteBtn = document.querySelectorAll(".deleteBtn"); //? here im creating a delete opcion inside the function
+    deleteBtn.forEach((db, i) =>{ //? here im giving the delete button "db" the ability to delete several input depending on the "i" that is selected.
+        db.addEventListener("click", () => { deleteItem(i)}) //? here im adding an click event to the "db" button so it deletes the input selected "i". 
+    })
+}
+function activateEditListeners() {
+    const editBtn = document.querySelectorAll(".editBtn") //? getting access to the edit button 
+    const updateController = document.querySelectorAll(".update-controller");//? getting access to the update button
+    const inputs = document.querySelectorAll(".input-controller textarea"); //? getting access to the text area for the edit function.
+    editBtn.forEach((eb, i) =>{
+        eb.addEventListener("click", () =>{ //? same logic as the delete button "db".
+            updateController[i].style.display = "block"; //? this gets the class created in the styles.css and change it to visible.
+            inputs[i].disable = false; //? and this one disables the property "disable" so the user can write text in the text area
+        })
+    })
+}
+
+function deleteItem(i) {
+    itemsArray.splice(i,1); //? the slice function deletes elements. the "1" parameter its because i only want to delete one element.
+    localStorage.setItem("items", JSON.stringify(itemsArray)); //? here im updating the local storage with the deleted item. Again transforming the input in a sting and adding it to the  object itemsArray.
+    location.reload(); // this refresh the page
+}
+
 
 function createItem(item) {
   //? This function will add the items we read on the "click button" #enter function and save it on local storage.
